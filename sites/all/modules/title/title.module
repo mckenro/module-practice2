@@ -1,0 +1,44 @@
+<?php
+function title_menu() {
+
+  $items['title'] = array(
+    'title' => 'Title Case Generator',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('title_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['title_success_page'] = array(
+    'title' => 'Great Success!',
+    'page callback' => 'title_success',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function title_form(){
+  $form['title_input'] = array(
+      '#title' => 'Input Text',
+      '#type' => 'textfield',
+      '#description' => t('Enter text to convert to Title Case'),
+  );
+  $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => 'Convert!',
+  );
+  return $form;
+}
+
+function title_form_submit($form, &$form_state) {
+    $title_convert = $form_state['values']['title_input'];
+    $word_titles = ucwords($title_convert);
+
+    $_SESSION['title_output'] = $word_titles;
+    $form_state['redirect'] = 'title_success_page';
+}
+
+function title_success() {
+  $result = $_SESSION['title_output'];
+  return "<p>Here is your result:</p><h2>$result</h2>";
+}

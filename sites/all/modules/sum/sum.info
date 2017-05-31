@@ -1,0 +1,5 @@
+title = Sum
+description = Display the sum of two user provided numbers.
+package = Roberto
+core = 7.x
+files[] = sum.module

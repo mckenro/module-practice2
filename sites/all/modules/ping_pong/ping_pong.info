@@ -1,0 +1,5 @@
+title = Ping Pong
+description = Worlds best ping pong calculator!
+package = Roberto
+core = 7.x
+files[] = ping_pong.module

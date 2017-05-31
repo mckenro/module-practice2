@@ -1,0 +1,5 @@
+title = Title Case Generator
+description = Convert and display text to Title Case!
+package = Roberto
+core = 7.x
+files[] = title.module
